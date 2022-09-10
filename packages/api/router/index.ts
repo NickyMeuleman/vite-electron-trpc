@@ -1,14 +1,12 @@
 import { createRouter } from "../context";
 import { z } from "zod";
 import { type BinaryLike, createHash } from "crypto";
-import superjson from "superjson";
 
 export function sha256sum(data: BinaryLike) {
   return createHash("sha256").update(data).digest("hex");
 }
 
 export const appRouter = createRouter()
-  // .transformer(superjson)
   .query("hello", {
     input: z
       .object({

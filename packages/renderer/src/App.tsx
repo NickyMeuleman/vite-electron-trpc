@@ -7,12 +7,10 @@ import {
   transformRPCResponse,
   TRPCAbortError,
   TRPCClientError,
-  createTRPCClient,
 } from "@trpc/client";
 import type { AnyRouter } from "@trpc/server";
 import type { TRPCLink, LinkRuntimeOptions } from "@trpc/client";
 import Test from "./Test";
-import superjson from "superjson";
 
 // superjson transformer gets inside runtime in this function if passed to client
 export function ipcLink<TRouter extends AnyRouter>(): TRPCLink<TRouter> {
@@ -50,7 +48,6 @@ function App() {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() => {
     return trpc.createClient({
-      // transformer: superjson,
       links: [ipcLink()],
     });
   });
