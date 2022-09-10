@@ -5,8 +5,6 @@ import { contextBridge, ipcRenderer } from "electron";
 import type { IpcRenderer, ContextBridge } from "electron";
 import type { ProcedureType } from "@trpc/server";
 // import { exposeElectronTRPC } from "electron-trpc";
-export { sha256sum } from "./nodeCrypto";
-export { versions } from "./versions";
 
 const exposeElectronTRPC = ({
   contextBridge,
@@ -45,8 +43,8 @@ export interface TRPCHandlerArgs {
 
 process.once("loaded", async () => {
   exposeElectronTRPC({ contextBridge, ipcRenderer });
-  // you expose "test" here, you get window.test in the React app
-  contextBridge.exposeInMainWorld("test", {
-    proberen: "tisnekeeromtezienofdatwerkteh",
-  });
+  // If you expose something here, you get window.something in the React app
+  // contextBridge.exposeInMainWorld("something", {
+  //   exposedThing: "this value was exposed via the preload file",
+  // });
 });

@@ -1,9 +1,6 @@
 import "./App.css";
 import { trpc } from "./utils/trpc";
-import { sha256sum } from "#preload";
 function Test() {
-  console.log(window.test, sha256sum(window.test.proberen));
-  
   const set = new Set<number>();
   set.add(1);
   set.add(2);
