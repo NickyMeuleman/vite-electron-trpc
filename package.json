@@ -17,20 +17,27 @@
     "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs"
   },
   "devDependencies": {
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
     "cross-env": "7.0.3",
     "electron": "20.1.1",
     "electron-builder": "23.3.3",
     "typescript": "4.8.2",
     "unplugin-auto-expose": "0.0.3",
     "vite": "3.1.0",
-    "vue-tsc": "0.40.9",
-    "@types/react": "^18.0.18",
-    "@types/react-dom": "^18.0.6"
+    "vue-tsc": "0.40.9"
   },
   "dependencies": {
+    "@trpc/client": "^9.27.2",
+    "@trpc/react": "^9.27.2",
+    "@trpc/server": "^9.27.2",
     "@vitejs/plugin-react": "^2.1.0",
+    "electron-trpc": "^0.1.0",
     "electron-updater": "5.2.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.2",
+    "superjson": "^1.9.1",
+    "zod": "^3.19.0"
   }
 }
