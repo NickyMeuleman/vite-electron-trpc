@@ -1,7 +1,9 @@
 import * as trpc from "@trpc/server";
 
 export const createContext = async (opts?: any) => {
-  return {};
+  return {
+    test:"yupyup"
+  };
 };
 
 type Context = trpc.inferAsyncReturnType<typeof createContext>;

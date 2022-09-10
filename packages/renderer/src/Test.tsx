@@ -1,19 +1,21 @@
 import "./App.css";
 import { trpc } from "./utils/trpc";
+import reactLogo from "./assets/react.svg";
+
 function Test() {
-  const set = new Set<number>();
-  set.add(1);
-  set.add(2);
-  set.add(3);
-  set.add(4);
-  set.add(5);
-  const date = trpc.useQuery(["date", { string: "2022-09-10", test: set }]);
-  if (!date.data) return <div>Loading...</div>;
+  const hello = trpc.useQuery(["example.hello", { text: "Nicky" }]);
 
   return (
     <div className="App">
-      <p>TEST</p>
-      <p>{date.data.date.getFullYear()}</p>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="vite.svg" className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://reactjs.org" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <p>{hello.data?.greeting}</p>
     </div>
   );
 }
