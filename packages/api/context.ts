@@ -1,8 +1,9 @@
 import * as trpc from "@trpc/server";
+import { prisma } from "./db/client";
 
 export const createContext = async (opts?: any) => {
   return {
-    test:"yupyup"
+    prisma,
   };
 };
 

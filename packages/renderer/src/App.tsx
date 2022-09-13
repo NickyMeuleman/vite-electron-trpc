@@ -9,7 +9,7 @@ import {
 } from "@trpc/client";
 import type { AnyRouter } from "@trpc/server";
 import type { TRPCLink, LinkRuntimeOptions } from "@trpc/client";
-import Test from "./Test";
+import Home from "./Home";
 
 // superjson transformer gets inside runtime in this function if passed to client
 export function ipcLink<TRouter extends AnyRouter>(): TRPCLink<TRouter> {
@@ -54,7 +54,7 @@ function App() {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
-          <Test />
+          <Home />
       </QueryClientProvider>
     </trpc.Provider>
   );

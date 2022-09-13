@@ -17,6 +17,8 @@ const exposeElectronTRPC = ({
     rpc: (args: TRPCHandlerArgs) => ipcRenderer.invoke("electron-trpc", args),
   });
 };
+console.log(process.resourcesPath);
+
 
 export interface TRPCHandlerArgs {
   path: string;
