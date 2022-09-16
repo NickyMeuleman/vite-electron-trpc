@@ -1,44 +1,21 @@
 {
-  "name": "vite-electron-builder",
-  "description": "Secure boilerplate for Electron app based on Vite",
+  "name": "vite-electron-trpc-prisma",
+  "description": "monorepo starting point for an app with electron vite trpc and prisma",
   "private": true,
-  "main": "packages/main/dist/index.cjs",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "build": "npm run build:main && npm run build:preload && npm run build:renderer",
-    "build:main": "cd ./packages/main && vite build",
-    "build:preload": "cd ./packages/preload && vite build",
-    "build:renderer": "cd ./packages/renderer && vite build",
-    "compile": "cross-env MODE=production npm run build && cross-env NODE_ENV=production electron-builder build --config .electron-builder.config.js --dir",
-    "watch": "cross-env NODE_ENV=development node scripts/watch.mjs",
-    "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
-    "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
-    "typecheck:renderer": "tsc --noEmit -p packages/renderer/tsconfig.json",
-    "typecheck": "npm run typecheck:main && npm run typecheck:preload && npm run typecheck:renderer",
-    "prisma:push": "cd ./packages/prisma && prisma db push",
-    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 electron scripts/update-electron-vendors.mjs && cd ./packages/prisma && prisma generate"
-  },
-  "devDependencies": {
-    "@types/node": "^18.7.17",
-    "@types/react": "^18.0.18",
-    "@types/react-dom": "^18.0.6",
-    "cross-env": "7.0.3",
-    "electron": "20.1.1",
-    "electron-builder": "23.3.3",
-    "typescript": "4.8.2",
-    "vite": "3.1.0"
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start"
   },
   "dependencies": {
-    "@prisma/client": "^4.3.1",
-    "@trpc/client": "^9.27.2",
-    "@trpc/react": "^9.27.2",
-    "@trpc/server": "^9.27.2",
-    "@vitejs/plugin-react": "^2.1.0",
-    "electron-trpc": "^0.1.0",
-    "electron-updater": "5.2.1",
-    "prisma": "^4.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-query": "^3.39.2",
-    "zod": "^3.19.0"
+    "turbo": "^1.4.6"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.1"
   }
 }
