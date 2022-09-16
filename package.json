@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "start": "turbo run start"
+    "start": "turbo run start",
+    "watch": "turbo run watch"
   },
   "dependencies": {
     "turbo": "^1.4.6"
