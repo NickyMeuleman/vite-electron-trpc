@@ -9,6 +9,7 @@ console.log("MAIN", { root: PACKAGE_ROOT, env: process.cwd() });
 // for example: import.meta.env.MODE isn't available and automatically gets set to "production" during vite build
 // to override that behaviour: set an env MODE variable and pass a mode: process.env.MODE to the vite config
 // https://vitejs.dev/guide/env-and-mode.html
+
 export default defineConfig({
   root: PACKAGE_ROOT,
   envDir: process.cwd(),

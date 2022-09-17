@@ -2,6 +2,7 @@
   "name": "vite-electron-trpc-prisma",
   "description": "monorepo starting point for an app with electron vite trpc and prisma",
   "private": true,
+  "main": "apps/desktop/dist/main/index.cjs",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -9,13 +10,17 @@
   "scripts": {
     "dev": "npm run watch:desktop -w packages/scripts",
     "build": "turbo run build",
-    "start": "turbo run start"
+    "start": "turbo run start",
+    "compile": "turbo run build && cross-env NODE_ENV=production electron-builder build --config .electron-builder.config.js --dir"
   },
   "dependencies": {
     "turbo": "^1.4.6"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "ts-node": "^10.9.1"
+    "electron": "^20.1.4",
+    "electron-builder": "^23.3.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
   }
 }
