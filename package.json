@@ -7,10 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo run dev",
+    "dev": "npm run watch:desktop -w packages/scripts",
     "build": "turbo run build",
-    "start": "turbo run start",
-    "watch": "turbo run watch"
+    "start": "turbo run start"
   },
   "dependencies": {
     "turbo": "^1.4.6"

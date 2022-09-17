@@ -2,9 +2,9 @@
   "name": "scripts",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "watch": "ts-node watch.ts"
+    "watch:web": "ts-node watch-web.ts",
+    "watch:desktop": "ts-node watch-desktop.ts"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",

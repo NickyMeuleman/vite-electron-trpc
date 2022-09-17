@@ -1,8 +1,10 @@
 import electronPath from "electron";
-import { build, createServer, createLogger } from "vite";
+import { build } from "vite";
 import type { ViteDevServer } from "vite";
 import { spawn } from "child_process";
 import type { ChildProcess } from "child_process";
+// TODO: figure out how to import a ts file when using modules for top-level await
+import { listeningWebServer } from "./watch-web";
 
 // process.env.MODE is used in various vite config files
 const mode = (process.env.MODE = process.env.MODE || "development");
@@ -39,7 +41,7 @@ function createPreloadWatcher(viteServer: ViteDevServer) {
  * Setup watcher for `desktop/main`
  * On file changes: shut down and relaunch electron
  */
-function createMainWatcher(viteServer: ViteDevServer) {
+function createMainWatcher() {
   let electronProcess: ChildProcess | null = null;
 
   const watcher = build({
@@ -84,29 +86,15 @@ function createMainWatcher(viteServer: ViteDevServer) {
   return watcher;
 }
 
-/**
- * Setup server for `web`
- * On file changes: hot reload
- */
-function createWebWatchServer() {
-  const server = createServer({
-    mode,
-    customLogger: createLogger("info", { prefix: `[web]` }),
-    configFile: "../../apps/web/vite.config.ts",
-  });
+async function main(webServerPromise: Promise<ViteDevServer>) {
+  const webWatchServer = await webServerPromise;
+  // set up VITE_DEV_SERVER_URL, the URL that's loaded into the electron browser during dev
+  process.env.VITE_DEV_SERVER_URL = webWatchServer.resolvedUrls?.local[0];
 
-  return server;
+  // start preload watcher
+  await createPreloadWatcher(webWatchServer);
+  // start main watcher
+  await createMainWatcher();
 }
 
-// start webserver
-const webWatchServer = await createWebWatchServer();
-await webWatchServer.listen();
-
-// set up VITE_DEV_SERVER_URL, the URL that's loaded into the browser during dev
-process.env.VITE_DEV_SERVER_URL = webWatchServer.resolvedUrls?.local[0];
-webWatchServer.printUrls();
-
-// start preload watcher
-await createPreloadWatcher(webWatchServer);
-// start main watcher
-await createMainWatcher(webWatchServer);
+main(listeningWebServer);

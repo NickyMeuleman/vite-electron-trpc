@@ -4,6 +4,7 @@
   "private": true,
   "main": "dist/main/index.cjs",
   "scripts": {
+    "dev": "npm run watch:desktop -w ../../packages/scripts",
     "start": "electron .",
     "build": "npm run build:main & npm run build:preload",
     "build:main": "tsc -p ./main/tsconfig.json && vite build main",

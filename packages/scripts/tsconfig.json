@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "lib": ["esnext"],
     "types": ["node"],
-    "noEmit": true,
+    "rootDir": "./"
   },
   "ts-node": {
     "esm": true
   },
-  "include": ["./**/*.ts", "./**/*.d.ts"]
+  "include": ["./*.ts"]
 }
