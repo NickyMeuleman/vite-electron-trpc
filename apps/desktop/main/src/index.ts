@@ -1,7 +1,9 @@
-import { app } from "electron";
+import { app, ipcMain } from "electron";
 import "./security-restrictions";
 import { restoreOrCreateWindow } from "./mainWindow";
-console.log("It's gonna be main, very auwtsch");
+import { createIPCHandler } from "trpc-electron/createIPCHandler";
+import { createContext } from 'api/context'
+import { appRouter } from 'api/router'
 
 /**
  * Prevent electron from running multiple instances.
@@ -54,3 +56,7 @@ app
 //     }))
 //     .catch(e => console.error('Failed install extension:', e));
 // }
+
+app.on("ready", () => {
+  createIPCHandler({ ipcMain, router: appRouter, createContext });
+});

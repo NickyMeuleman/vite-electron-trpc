@@ -10,6 +10,10 @@
     "build:main": "tsc -p ./main/tsconfig.json && vite build main",
     "build:preload": "tsc -p ./preload/tsconfig.json && vite build preload"
   },
+  "dependencies": {
+    "api": "*",
+    "trpc-electron": "*"
+  },
   "devDependencies": {
     "@types/node": "^18.7.18",
     "electron": "20.1.4",

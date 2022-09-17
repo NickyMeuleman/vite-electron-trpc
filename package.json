@@ -11,7 +11,7 @@
     "dev": "npm run watch:desktop -w packages/scripts",
     "build": "turbo run build",
     "start": "turbo run start",
-    "compile": "turbo run build && cross-env MODE=production npm run build && cross-env NODE_ENV=production electron-builder build --config .electron-builder.config.js --dir"
+    "compile": "cross-env MODE=production turbo run build && cross-env NODE_ENV=production electron-builder build --config .electron-builder.config.js --dir"
   },
   "dependencies": {
     "turbo": "^1.4.6"
