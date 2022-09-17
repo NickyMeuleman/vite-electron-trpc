@@ -5,7 +5,12 @@
       "outputs": ["dist/**"]
     },
     "start": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "compile": {
+      "dependsOn": ["build"],
+      "outputs": ["dist/**"]
     }
   }
 }
