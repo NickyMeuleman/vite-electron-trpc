@@ -9,9 +9,11 @@
   ],
   "scripts": {
     "dev": "npm run watch:desktop -w packages/scripts",
+    "dev:web": "npm run watch:web -w packages/scripts",
     "build": "turbo run build",
     "start": "turbo run start",
-    "compile": "cross-env MODE=production turbo run build && cross-env NODE_ENV=production electron-builder build --config .electron-builder.config.js --dir"
+    "compile": "cross-env MODE=production turbo run build && cross-env NODE_ENV=production electron-builder build --config .electron-builder.config.js --dir",
+    "generate": "npm run generate -w packages/api"
   },
   "dependencies": {
     "turbo": "^1.4.6"

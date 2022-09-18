@@ -1,6 +1,7 @@
 node_modules
 dist
 .turbo
+generated
 
 # while moving over to turborepo
 old

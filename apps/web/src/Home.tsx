@@ -4,6 +4,7 @@ import reactLogo from "./assets/react.svg";
 
 function Home() {
   const hi = trpc.useQuery(["hi", { name: "Nicky" }]);
+  // const all = trpc.useQuery(["getAll"]);
 
   return (
     <div className="App">
