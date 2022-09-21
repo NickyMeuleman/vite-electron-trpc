@@ -1,0 +1,14 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "sqlite"
+  url                  = "file:./../../../buildResources/db.sqlite"
+  referentialIntegrity = "prisma"
+}
+
+model Example {
+  id String @id @default(cuid())
+}

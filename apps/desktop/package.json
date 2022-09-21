@@ -11,8 +11,7 @@
     "build:preload": "tsc -p ./preload/tsconfig.json && vite build preload"
   },
   "dependencies": {
-    "api": "*",
-    "trpc-electron": "*"
+    "api": "*"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",

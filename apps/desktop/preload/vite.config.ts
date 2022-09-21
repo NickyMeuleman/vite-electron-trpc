@@ -1,3 +1,4 @@
+// import { chrome } from "../.electron-vendors.cache.json";
 import { builtinModules } from "module";
 import { defineConfig } from "vite";
 
@@ -10,9 +11,11 @@ console.log("PRELOAD", { root: PACKAGE_ROOT, env: process.cwd() });
 // to override that behaviour: set an env MODE variable and pass a mode: process.env.MODE to the vite config
 // https://vitejs.dev/guide/env-and-mode.html
 export default defineConfig({
+  mode: process.env.MODE,
   root: PACKAGE_ROOT,
   envDir: process.cwd(),
   build: {
+    ssr: true,
     target: `chrome104`,
     sourcemap: "inline",
     outDir: "../dist/preload",

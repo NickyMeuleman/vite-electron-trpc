@@ -3,8 +3,8 @@ import { trpc } from "./utils/trpc";
 import reactLogo from "./assets/react.svg";
 
 function Home() {
-  const hi = trpc.useQuery(["hi", { name: "Nicky" }]);
-  // const all = trpc.useQuery(["getAll"]);
+  const hello = trpc.greeting.useQuery({ name: "Nicky" });
+  if (!hello.data) return <div>Loading...</div>;
 
   return (
     <div className="App">
@@ -17,7 +17,7 @@ function Home() {
         </a>
       </div>
       <p>From tRPC:</p>
-      <p>{hi?.data}</p>
+      <p>{hello.data}</p>
     </div>
   );
 }

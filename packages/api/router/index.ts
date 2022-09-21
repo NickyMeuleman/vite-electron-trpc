@@ -1,11 +1,15 @@
 import { z } from "zod";
-import { createRouter } from "../context";
+import { t } from "../context";
 
-export const appRouter = createRouter().query("hi", {
-  input: z.object({ name: z.string() }).nullish(),
-  resolve({ input }) {
-    return `Hello ${input?.name || "world"}`;
-  },
+export const appRouter = t.router({
+  greeting: t.procedure
+    .input(z.object({ name: z.string() }))
+    .query(async ({ input, ctx }) => {
+      const count = await ctx.prisma.example.count();
+      return `hello tRPC v10, ${input.name ?? "world"}! I say ${
+        ctx.tomato
+      }. Example count: ${count}`;
+    }),
 });
 
 // export type definition of API

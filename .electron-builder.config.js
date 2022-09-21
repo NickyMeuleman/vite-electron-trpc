@@ -18,10 +18,17 @@ const config = {
     "apps/desktop/dist/main/**",
     "apps/desktop/dist/preload/**",
     "apps/web/dist/**",
+    "packages/api/dist/**",
+    "packages/database/dist/**"
   ],
   extraMetadata: {
     version: process.env.VITE_APP_VERSION,
   },
+  extraResources: [
+    "buildResources/db.sqlite",
+    "node_modules/.prisma/**/*",
+    "node_modules/@prisma/client/**/*",
+  ],
 };
 
 module.exports = config;

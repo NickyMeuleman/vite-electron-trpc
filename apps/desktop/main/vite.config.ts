@@ -1,3 +1,6 @@
+// import {node} from '../.electron-vendors.cache.json';
+import {join} from 'path';
+
 import { defineConfig } from "vite";
 import { builtinModules } from "module";
 
@@ -11,11 +14,17 @@ console.log("MAIN", { root: PACKAGE_ROOT, env: process.cwd() });
 // https://vitejs.dev/guide/env-and-mode.html
 
 export default defineConfig({
+  mode: process.env.MODE,
   root: PACKAGE_ROOT,
   envDir: process.cwd(),
-
+  resolve: {
+    alias: {
+      "/@/": join(PACKAGE_ROOT, "src") + "/",
+    },
+  },
   build: {
-    target: "node16",
+    ssr: true,
+    target: `node16`,
     sourcemap: "inline",
     outDir: "../dist/main",
     emptyOutDir: true,
